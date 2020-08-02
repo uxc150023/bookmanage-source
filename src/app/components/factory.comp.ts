@@ -2,6 +2,7 @@
 import Vue from "vue";
 
 // SGV-BUILD-COMP-FAC # NOT DELETE
+Vue.component("sideMenu", require("./side-menu/side-menu.vue").default);
 Vue.component("headbar", require("./headbar/headbar.vue").default);
 Vue.component(
   "AccountSettings",

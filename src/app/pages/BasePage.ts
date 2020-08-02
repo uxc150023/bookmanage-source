@@ -11,12 +11,12 @@ export default class BasePage extends ComBaseComp {
     const headerToken = localStorage.getItem(HEADER_TOKEN);
     next((vm: Vue) => {
       // 验证登录
-      if (!headerToken) {
-        vm.$router.replace({
-          name: "loginReturn",
-          params: { return: encodeURIComponent(to.fullPath) },
-        });
-      }
+      // if (!headerToken) {
+      //   vm.$router.replace({
+      //     name: "loginReturn",
+      //     params: { return: encodeURIComponent(to.fullPath) },
+      //   });
+      // }
     });
   }
 }

@@ -7,10 +7,43 @@ Vue.use(VueRouter);
 // tslint:disable:object-literal-sort-keys
 const routes: RouteConfig[] = [
   // SGV-BUILD-PAGE-ROUTER-CONFIG # NOT DELETE
+  {
+    path: "/",
+    name: "frame",
+    component: PageFactory.framePagePreloading,
+    children: [
+      {
+        path: "/book_manage",
+        name: "bookManage",
+        component: PageFactory.bookManagePagePreloading,
+      },
+      {
+        path: "/book_update",
+        name: "bookUpdate",
+        component: PageFactory.bookUpdatePagePreloading,
+      },
+
+      {
+        path: "/about",
+        name: "about",
+        component: PageFactory.aboutPagePreloading,
+      },
+      {
+        path: "/add_book",
+        name: "addBook",
+        component: PageFactory.addBookPagePreloading,
+      },
+    ],
+  },
+
   { path: "/home", name: "home", component: PageFactory.homePagePreloading },
   { path: "*", redirect: "login" },
   { path: "/login", name: "login", component: PageFactory.loginPagePreloading },
-  { path: "/login/:return", name: "loginReturn", component: PageFactory.loginPagePreloading },
+  {
+    path: "/login/:return",
+    name: "loginReturn",
+    component: PageFactory.loginPagePreloading,
+  },
   {
     path: "*",
     redirect: "login",
