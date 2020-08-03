@@ -22,9 +22,6 @@ export class BookmanageService extends BaseService
   }
   // SGV-BUILD-SERVICE-FUNCTION # NOT DELETE
   public getBookAll(pagination: PaginationInfo): Promise<any> {
-    return this.proxyHttp.get("getBookAll", {}, [
-      pagination.pages + "",
-      pagination.pageSize + "",
-    ]);
+    return this.proxyHttp.get("getBookAll", { ...pagination }, []);
   }
 }

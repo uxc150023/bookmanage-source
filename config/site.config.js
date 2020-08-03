@@ -1,10 +1,10 @@
 var __sg_site_config__ = {
   DEV: {
-    remote: "127.0.0.1:8181",
+    remote: "localhost:8181",
     otherRemotes: {
-      user: "127.0.0.1:8181",
+      user: "localhost:8181",
     },
-    local: "127.0.0.1:8181",
+    local: "localhost:8181",
     entrance: "http://dev.domain.name:8080/login",
     appID: "xxx",
     protocol: "http:",

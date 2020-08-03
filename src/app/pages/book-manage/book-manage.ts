@@ -32,13 +32,13 @@ export default class BookManagePage extends mixins(BasePage)
   }
 
   async getBookAll() {
-    try {
-      const res = await this.bookmanageService.getBookAll(this.paginationInfo);
-      // this.tableData = res.data.content;
-      // this.paginationInfo.totalSize = res.data.totalElements;
-    } catch (error) {
-      console.log("111", error);
-    }
+    // try {
+    const res = await this.bookmanageService.getBookAll(this.paginationInfo);
+    this.tableData = res.data.content;
+    // this.paginationInfo.totalSize = res.data.totalElements;
+    // } catch (error) {
+    //   console.log("111", error);
+    // }
   }
 
   handleSizeChange(val: number) {
