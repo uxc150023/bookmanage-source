@@ -13,6 +13,7 @@ export const apiConfig: IApiConfig = {
   get: {
     // SGV-BUILD-API-GET # NOT DELETE
     getBookAll: "apiHost:/book/findAll",
+    getBookInfo: "apiHost:/book/bookInfo",
   },
   put: {
     // SGV-BUILD-API-PUT # NOT DELETE

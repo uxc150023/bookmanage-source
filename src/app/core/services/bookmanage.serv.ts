@@ -5,6 +5,7 @@ export interface IBookmanageService {
   // SGV-BUILD-SERVICE-INTERFACE # NOT DELETE
   // login(userName: string, password: string): Promise<any>;
   getBookAll(pagination: PaginationInfo): Promise<any>;
+  getBookInfo(id: number): Promise<any>;
 }
 
 type IBookmanageServiceConstructor = new () => IBookmanageService;
@@ -23,5 +24,8 @@ export class BookmanageService extends BaseService
   // SGV-BUILD-SERVICE-FUNCTION # NOT DELETE
   public getBookAll(pagination: PaginationInfo): Promise<any> {
     return this.proxyHttp.get("getBookAll", { ...pagination }, []);
+  }
+  public getBookInfo(id: number): Promise<any> {
+    return this.proxyHttp.get("getBookInfo", { id: Number }, []);
   }
 }

@@ -1,14 +1,235 @@
 @import "./var.scss";
 @import "~element-ui/packages/theme-chalk/src/index";
 
-.modal-form{
-  .el-dialog__body{
+.modal-form {
+  .el-dialog__body {
     padding: 20px 30px;
   }
 }
 
-.form-long-width{
-  .el-input, .el-select, .el-cascader{
-    width: 100%
+.form-long-width {
+  .el-input,
+  .el-select,
+  .el-cascader {
+    width: 100%;
+  }
+}
+
+// 通用table
+.common-table {
+  padding: 16px 20px;
+  background: #fff;
+  margin-top: 15px;
+  .el-table__header {
+    th {
+      background: #fafbfb;
+      padding: 0;
+      height: 48px;
+      .cell {
+        font-size: 15px;
+        font-weight: 400;
+        color: #909399;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .el-table__body {
+    tr {
+      td {
+        padding: 0;
+        height: 48px;
+      }
+    }
+    .cell {
+      font-size: 1px;
+      font-family: ArialMT;
+      color: rgba(96, 98, 102, 1);
+      line-height: 16px;
+      display: flex;
+      align-items: center;
+      span,
+      p {
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      img {
+        width: 12px;
+        height: 12px;
+        margin-right: 4px;
+      }
+      button {
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(44, 187, 211, 1);
+        line-height: 20px;
+        margin-right: 13px;
+      }
+      a {
+        cursor: pointer;
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(46, 130, 221, 1);
+        line-height: 20px;
+      }
+    }
+    .c_F8A738 {
+      color: #f8a738;
+    }
+    .c_2CBBD3 {
+      color: #2cbbd3;
+    }
+    .c_909399 {
+      color: #909399;
+    }
+  }
+}
+
+// 通用dialog
+.common-dialog {
+  margin-top: 15vh;
+  // min-height: 448px;
+  .item-lineHeight-16 {
+    line-height: 16px;
+  }
+  .el-dialog__header {
+    border-bottom: 1px solid #e7eaec;
+    height: 54px;
+    padding: 0 36px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    .el-dialog__title {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(52, 52, 52, 1);
+      line-height: 22px;
+    }
+  }
+  .el-dialog__body {
+    padding: 24px 30px;
+    height: 464px;
+    overflow: hidden;
+    overflow-y: scroll;
+    .el-radio-group {
+      width: 100%;
+    }
+    margin: 0 auto;
+    .el-table {
+      .has-gutter {
+        .cell {
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(52, 52, 52, 1);
+          line-height: 22px;
+        }
+      }
+    }
+  }
+  .el-dialog__body::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 4px;
+    height: 1px;
+  }
+  .el-dialog__body::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    width: 4px;
+    background: rgba(180, 188, 200, 1);
+    border-radius: 3px;
+  }
+  .el-dialog__body::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    display: none;
+  }
+  .el-dialog__body::-webkit-scrollbar-track-piece {
+    display: none;
+  }
+  .el-form {
+    margin: 0 auto;
+    width: 470px;
+    .el-input,
+    .el-select {
+      width: 100%;
+      .el-select__tags {
+        .el-tag {
+          border: 0;
+          background: rgba(233, 248, 250, 1);
+          border-radius: 2px;
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(44, 187, 211, 1);
+          .el-select__tags-text {
+            font-size: 14px;
+            color: rgba(44, 187, 211, 1);
+            line-height: 20px;
+          }
+        }
+        .el-icon-close::before {
+          color: #2cbbd3;
+        }
+        .el-icon-close {
+          border: 1px solid rgba(44, 187, 211, 1);
+          background: transparent;
+        }
+      }
+    }
+    .el-checkbox__input.is-disabled .el-checkbox__inner {
+      background-color: #e9ecef;
+      color: #e9ecef;
+      border-color: #b4bcc8;
+    }
+    .el-checkbox__input.is-focus .el-checkbox__inner {
+      border-color: #dcdfe6;
+    }
+    .el-form-item__error {
+      padding-top: 2px;
+    }
+    input,
+    textarea,
+    select {
+      font-size: 14px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(108, 108, 108, 1);
+      line-height: 20px;
+      resize: none;
+    }
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+      font-size: 14px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(180, 188, 200, 1);
+      line-height: 20px;
+    }
+
+    .set-line-height {
+      .el-form-item__label {
+        line-height: 30px;
+      }
+      .el-form-item__content {
+        line-height: 30px;
+      }
+    }
+  }
+  .el-dialog__footer {
+    border-top: 1px solid #e7eaec;
+    padding: 10px 30px;
+    button {
+      font-size: 14px;
+      font-weight: 400;
+      padding: 7px 16px;
+      margin-left: 10px;
+      line-height: 20px;
+      min-width: 90px;
+      border-radius: 2px;
+    }
   }
 }
