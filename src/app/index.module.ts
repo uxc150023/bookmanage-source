@@ -21,7 +21,7 @@ Vue.$sg.configAdapter.env = env;
 Vue.$sg.configAdapter.sites = sites;
 
 const main = new Vue({
-  render: h => h(app),
+  render: (h) => h(app),
   router,
   store,
 }).$mount("#app");

@@ -1,3 +1,4 @@
+import { ElForm } from "element-ui/types/form";
 import Vue from "vue";
 import Component, { mixins } from "vue-class-component";
 import { AutowiredService } from "../../../lib/sg-resource/decorators";
@@ -5,7 +6,7 @@ import { PaginationInfo } from "../../core/domain/PaginationInfo";
 import { BookmanageService } from "../../core/services/bookmanage.serv";
 import BasePage from "../BasePage";
 
-const bookInfo = {
+const BaookInfo = {
   author: "",
   id: "",
   name: "",
@@ -36,6 +37,10 @@ export default class BookManagePage extends mixins(BasePage)
   tableData: any[] = [];
   bookInfo: any = {};
   isVisiable: boolean = false;
+  searchForm: any = {
+    searchKey: "",
+  };
+  addBook: boolean = false;
 
   // 校验规则
   bookRules: any = {
@@ -59,8 +64,9 @@ export default class BookManagePage extends mixins(BasePage)
     }
   }
 
-  async getBookInfo(id: number) {
+  async getBookInfo(id: string) {
     try {
+      this.isVisiable = true;
       const res = await this.bookmanageService.getBookInfo(id);
       this.bookInfo = res;
     } catch (error) {
@@ -75,9 +81,43 @@ export default class BookManagePage extends mixins(BasePage)
   }
 
   async edit(row: any) {
-    //
     this.getBookInfo(row.id);
   }
+
+  close() {
+    if (this.$refs.bookForm) {
+      (this.$refs.bookForm as ElForm).resetFields();
+    }
+  }
+
+  // 保存/新建 修改
+  async save() {
+    try {
+      if (this.addBook) {
+        const res = await this.bookmanageService.bookAdd(this.bookInfo);
+        this.$message.success(`${this.bookInfo.name}添加成功`);
+      } else {
+        const res = await this.bookmanageService.bookUpdata(this.bookInfo);
+        this.$message.success(`${this.bookInfo.name}修改成功`);
+      }
+      this.fetchData();
+      this.isVisiable = false;
+    } catch (error) {
+      //
+    }
+  }
+
+  // 删除
+  async deleteBook(id: string) {
+    try {
+      const res = await this.bookmanageService.bookDelete(id);
+      this.fetchData();
+      this.$message.success("删除成功");
+    } catch (error) {
+      //
+    }
+  }
+
   /* 生命钩子 START */
   mounted() {
     //

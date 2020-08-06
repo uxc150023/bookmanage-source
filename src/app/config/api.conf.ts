@@ -9,6 +9,7 @@ export const apiConfig: IApiConfig = {
     // SGV-BUILD-API-POST # NOT DELETE
     // 用户登录
     login: "apiHost:/pmUser/login",
+    bookAdd: "apiHost:/book/add",
   },
   get: {
     // SGV-BUILD-API-GET # NOT DELETE
@@ -17,8 +18,10 @@ export const apiConfig: IApiConfig = {
   },
   put: {
     // SGV-BUILD-API-PUT # NOT DELETE
+    bookUpdata: "apiHost:/book/update",
   },
   delete: {
     // SGV-BUILD-API-DELETE # NOT DELETE
+    bookDelete: "apiHost:/book/delete",
   },
 };

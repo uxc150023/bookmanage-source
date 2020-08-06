@@ -1,8 +1,8 @@
 <template>
   <el-container class="frame-module">
-    <el-aside width="200px">
+    <!-- <el-aside width="200px">
       <side-menu></side-menu>
-    </el-aside>
+    </el-aside> -->
     <el-container>
       <el-main>
         <router-view></router-view>
@@ -78,7 +78,7 @@ $color: #333;
     background: #364866;
   }
 }
-.el-main {
-  max-width: calc(100vw - 200px);
-}
+// .el-main {
+//   max-width: calc(100vw - 200px);
+// }
 </style>

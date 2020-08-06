@@ -1,5 +1,32 @@
 <template>
   <div class="page-module">
+    <div class="filter-box m-bottom-20">
+      <el-input
+        size="medium"
+        v-model="searchForm.searchKey"
+        suffix-icon="el-icon-search"
+        @change="
+          paginationInfo.pages = 1;
+          fetchData();
+        "
+        placeholder="请输入书名"
+      >
+      </el-input>
+
+      <el-button
+        class="fr"
+        size="medium"
+        @click="
+          isVisiable = true;
+          addBook = true;
+        "
+        icon="el-icon-plus"
+        type="primary"
+        >创建新书</el-button
+      >
+      <div style="clear:both"></div>
+    </div>
+
     <div class="common-table">
       <el-table :data="tableData" style="width: 100%" v-loading="loading">
         <el-table-column label="编号" width="" type="index">
@@ -43,7 +70,10 @@
             <el-button @click="edit(scope.row)" type="text" size="small"
               >修改</el-button
             >
-            <el-button @click="deleteBook(scope.row)" type="text" size="small"
+            <el-button
+              @click="deleteBook(scope.row.id)"
+              type="text"
+              size="small"
               >删除</el-button
             >
           </template>
@@ -65,10 +95,11 @@
     </div>
 
     <el-dialog
-      title="修改"
+      :title="addBook ? '新建' : '修改'"
       custom-class="common-dialog form-big"
       :close-on-click-modal="false"
       :visible.sync="isVisiable"
+      @close="close"
     >
       <el-form
         size="medium"
@@ -94,6 +125,11 @@
           <el-input v-model="bookInfo.price"></el-input>
         </el-form-item>
       </el-form>
+
+      <div class="text-right" slot="footer">
+        <el-button @click="isVisiable = false">取消</el-button>
+        <el-button type="primary" @click="save">确定</el-button>
+      </div>
     </el-dialog>
   </div>
 </template>
