@@ -41,12 +41,13 @@ export default class LoginPage extends mixins(ComBaseComp)
     const valid = await this.loginForm.validate();
     try {
       if (valid) {
-        const data = await this.systemService.login(
-          this.form.userName,
-          this.form.password,
-        );
-        this.$store.commit(SET_ACCOUNT_INFO, data);
-        this.$router.replace("/");
+        this.$router.push({ name: "bookManage" });
+        // const data = await this.systemService.login(
+        //   this.form.userName,
+        //   this.form.password,
+        // );
+        // this.$store.commit(SET_ACCOUNT_INFO, data);
+        // this.$router.replace("/");
       }
     } catch (error) {
       this.messageError(error);
@@ -72,7 +73,6 @@ export default class LoginPage extends mixins(ComBaseComp)
   mounted() {
     //
     console.log(this.$sg);
-    
   }
   destroyed() {
     Common.removeClass(document.querySelector("html"), "login-page");

@@ -10,6 +10,17 @@ var __sg_site_config__ = {
     protocol: "http:",
     publicPath: "/",
   },
+  SIT: {
+    remote: "139.224.134.162:8181",
+    otherRemotes: {
+      user: "139.224.134.162:8181",
+    },
+    local: "139.224.134.162:8181",
+    entrance: "http://dev.domain.name:8080/login",
+    appID: "xxx",
+    protocol: "http:",
+    publicPath: "/",
+  },
   TEST: {
     remote: "test.domain.name:18080",
     otherRemotes: {
@@ -41,7 +52,7 @@ var __sg_site_config__ = {
     protocol: "https:",
     publicPath: "/",
   },
-  runtimes: "DEV",
+  runtimes: "SIT",
 };
 if (typeof global === "object") {
   global.__sg_site_config__ = __sg_site_config__;

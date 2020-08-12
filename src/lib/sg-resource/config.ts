@@ -178,7 +178,7 @@ export class ConfigAdapter implements IConfigAdapter {
       } else {
         let publicPath = "/";
         if (NODE_ENV === "production") {
-          publicPath = "/call_center/";
+          publicPath = "/book_manage/";
         }
         const url: any = publicPath + "config/site.json?t=" + Date.now();
         Axios.get(url)
