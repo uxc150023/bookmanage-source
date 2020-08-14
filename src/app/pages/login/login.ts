@@ -4,6 +4,7 @@ import Component, { mixins } from "vue-class-component";
 import { AutowiredService } from "../../../lib/sg-resource/decorators";
 import { ComBaseComp } from "../../core/ComBaseComp";
 import Common from "../../core/common";
+import { BookmanageService } from "../../core/services/bookmanage.serv";
 import { SystemService } from "../../core/services/system.serv";
 import { SET_ACCOUNT_INFO } from "../../core/store/mutationTypes";
 
@@ -17,7 +18,8 @@ export default class LoginPage extends mixins(ComBaseComp)
   implements ILoginPage {
   @AutowiredService
   systemService: SystemService;
-
+  @AutowiredService
+  bookmanageService: BookmanageService;
   form: any = {};
   rules: any = {
     password: [{ required: true, message: "请输入您的密码", trigger: "blur" }],
@@ -41,11 +43,11 @@ export default class LoginPage extends mixins(ComBaseComp)
     const valid = await this.loginForm.validate();
     try {
       if (valid) {
-        this.$router.push({ name: "bookManage" });
-        // const data = await this.systemService.login(
-        //   this.form.userName,
-        //   this.form.password,
-        // );
+        // this.$router.push({ name: "bookManage" });
+        const data = await this.bookmanageService.bookLogin({
+          password: this.form.password,
+          username: this.form.userName,
+        });
         // this.$store.commit(SET_ACCOUNT_INFO, data);
         // this.$router.replace("/");
       }

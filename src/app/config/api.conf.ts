@@ -10,6 +10,7 @@ export const apiConfig: IApiConfig = {
     // 用户登录
     login: "apiHost:/pmUser/login",
     bookAdd: "apiHost:/book/add",
+    bookLogin: "apiHost:/book/login",
   },
   get: {
     // SGV-BUILD-API-GET # NOT DELETE

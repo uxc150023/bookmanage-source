@@ -9,6 +9,7 @@ export interface IBookmanageService {
   bookUpdata(params: any): Promise<any>;
   bookAdd(params: any): Promise<any>;
   bookDelete(id: string): Promise<any>;
+  bookLogin(any: { username: string; password: string }): Promise<any>;
 }
 
 type IBookmanageServiceConstructor = new () => IBookmanageService;
@@ -39,5 +40,8 @@ export class BookmanageService extends BaseService
   }
   public bookDelete(id: string): Promise<any> {
     return this.proxyHttp.delete("bookDelete", [id]);
+  }
+  public bookLogin(params: any): Promise<any> {
+    return this.proxyHttp.post("bookLogin", params);
   }
 }
