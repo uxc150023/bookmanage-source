@@ -1,16 +1,11 @@
 <template>
   <div class="page-module">
-    {{title}}
+    <nav-menu></nav-menu>
+    <router-view />
   </div>
 </template>
-<script lang="ts" src="./home.ts">
-
-</script>
+<script lang="ts" src="./home.ts"></script>
 <style lang="scss" scoped>
-$color: #333;
-
 .page-module {
-  color: $color;
-  font-size: 0.6rem;
 }
 </style>

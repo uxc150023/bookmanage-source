@@ -1,4 +1,25 @@
 // SGV-BUILD-PAGE-FAC # NOT DELETE
+// 'Library' PAGE FACTORY START
+export function libraryPagePreloading(): Promise<any> {
+  return import("./library/library.vue").catch(error => {
+    return dealOccurred(error, "Library");
+  });
+}
+// 'Library' PAGE FACTORY END
+// 'Index' PAGE FACTORY START
+export function indexPagePreloading(): Promise<any> {
+  return import("./index/index.vue").catch(error => {
+    return dealOccurred(error, "Index");
+  });
+}
+// 'Index' PAGE FACTORY END
+// 'Home' PAGE FACTORY START
+export function homePagePreloading(): Promise<any> {
+  return import("./home/home.vue").catch(error => {
+    return dealOccurred(error, "Home");
+  });
+}
+// 'Home' PAGE FACTORY END
 // 'Frame' PAGE FACTORY START
 export function framePagePreloading(): Promise<any> {
   return import("./frame/frame.vue").catch(error => {
@@ -34,13 +55,6 @@ export function addBookPagePreloading(): Promise<any> {
   });
 }
 // 'AddBook' PAGE FACTORY END
-// 'Home' PAGE FACTORY START
-export function homePagePreloading(): Promise<any> {
-  return import("./home/home.vue").catch((error) => {
-    return dealOccurred(error, "Home");
-  });
-}
-// 'Home' PAGE FACTORY END
 // 'Login' PAGE FACTORY START
 export function loginPagePreloading(): Promise<any> {
   return import("./login/login.vue").catch((error) => {

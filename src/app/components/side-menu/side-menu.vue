@@ -1,20 +1,35 @@
 <template>
   <div class="comp-module">
-    {{ nameC }}
-    <el-menu router :default-openeds="['0', '1']">
-      <div v-for="(item, index) in $router.options.routes" :key="index">
-        <el-submenu :index="index + ''" v-if="item.show">
+    <el-menu
+      :default-active="activeMenu"
+      :collapse="isCollapse"
+      @select="handleSelectMItem"
+    >
+      <div v-for="(menu, index) in menuList" :key="index">
+        <el-menu-item
+          :index="menu.path"
+          v-if="!menu.children && hasMenuPermission(menu.path)"
+        >
+          <i :class="menu.icon"></i>
+          {{ menu.name }}
+        </el-menu-item>
+
+        <el-submenu
+          :index="menu.path"
+          v-show="validateShowSubMenu(menu.children)"
+        >
           <template slot="title">
-            <i class="el-icon-setting"></i>
-            <span>{{ item.name }}</span>
+            <i :class="menu.icon"></i>
+            <span slot="title">{{ menu.name }}</span>
           </template>
           <el-menu-item
-            v-for="(item2, index2) in item.children"
-            :key="index2"
-            :index="item2.path"
-            :class="$route.path == item2.path ? 'is-active' : ''"
+            :index="child.path"
+            v-show="hasMenuPermission(child.path)"
+            v-for="(child, i) in menu.children"
+            :key="i"
           >
-            <span>{{ item2.name }}</span>
+            <i :class="menu.icon"></i>
+            <span>{{ child.name }}</span>
           </el-menu-item>
         </el-submenu>
       </div>

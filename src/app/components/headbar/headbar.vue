@@ -1,28 +1,24 @@
 <template>
   <div class="comp-module">
     <div class="logo">
-      <img src="../../styles/images/logo.png"
-           alt="cchrpp logo">
+      <img src="../../styles/images/logo.png" alt="cchrpp logo" />
     </div>
-    <h1>云GCP平台</h1>
+    <h1>XXXXX</h1>
     <div class="account-box">
-      <img src="../../styles/images/avatar_boy.png"
-           alt="avatar">
+      <img src="../../styles/images/avatar_boy.png" alt="avatar" />
       <el-dropdown @command="handleCommand">
         <span class="el-dropdown-link">
           小铭<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="a">账户设置</el-dropdown-item>
-          <el-dropdown-item command="e"
-                            divided>退出</el-dropdown-item>
+          <el-dropdown-item command="e" divided>退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
   </div>
 </template>
-<script lang="ts" src="./headbar.ts">
-</script>
+<script lang="ts" src="./headbar.ts"></script>
 <style lang="scss" scoped>
 $color: #333;
 
@@ -93,5 +89,4 @@ h1 {
   color: #c6cfda;
   letter-spacing: 0;
 }
-
 </style>

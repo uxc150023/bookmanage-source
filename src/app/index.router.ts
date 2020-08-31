@@ -7,36 +7,65 @@ Vue.use(VueRouter);
 // tslint:disable:object-literal-sort-keys
 const routes: RouteConfig[] = [
   // SGV-BUILD-PAGE-ROUTER-CONFIG # NOT DELETE
+  // {
+  //   path: "/library",
+  //   name: "library",
+  //   component: PageFactory.libraryPagePreloading,
+  // },
+  // { path: "/index", name: "index", component: PageFactory.indexPagePreloading },
+  // { path: "/home", name: "home", component: PageFactory.homePagePreloading },
   {
-    path: "/",
-    name: "frame",
-    component: PageFactory.framePagePreloading,
+    // path: "/",
+    // name: "frame",
+    // component: PageFactory.framePagePreloading,
+    // children: [
+    //   {
+    //     path: "/book_manage",
+    //     name: "bookManage",
+    //     component: PageFactory.bookManagePagePreloading,
+    //   },
+    //   {
+    //     path: "/book_update",
+    //     name: "bookUpdate",
+    //     component: PageFactory.bookUpdatePagePreloading,
+    //   },
+
+    //   {
+    //     path: "/about",
+    //     name: "about",
+    //     component: PageFactory.aboutPagePreloading,
+    //   },
+    //   {
+    //     path: "/add_book",
+    //     name: "addBook",
+    //     component: PageFactory.addBookPagePreloading,
+    //   },
+    // ],
+
+    path: "/home",
+    name: "Home",
+    component: PageFactory.homePagePreloading,
+    // redirect: "/index",
     children: [
       {
-        path: "/book_manage",
-        name: "bookManage",
-        component: PageFactory.bookManagePagePreloading,
+        path: "/main",
+        name: "AppIndex",
+        component: PageFactory.indexPagePreloading,
+        meta: {
+          requireAuth: true,
+        },
       },
       {
-        path: "/book_update",
-        name: "bookUpdate",
-        component: PageFactory.bookUpdatePagePreloading,
-      },
-
-      {
-        path: "/about",
-        name: "about",
-        component: PageFactory.aboutPagePreloading,
-      },
-      {
-        path: "/add_book",
-        name: "addBook",
-        component: PageFactory.addBookPagePreloading,
+        path: "/library",
+        name: "AppLibrary",
+        component: PageFactory.libraryPagePreloading,
+        meta: {
+          requireAuth: true,
+        },
       },
     ],
   },
 
-  { path: "/home", name: "home", component: PageFactory.homePagePreloading },
   { path: "*", redirect: "login" },
   { path: "/login", name: "login", component: PageFactory.loginPagePreloading },
   {

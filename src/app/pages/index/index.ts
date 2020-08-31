@@ -3,7 +3,7 @@ import Component, { mixins } from "vue-class-component";
 import { AutowiredService } from "../../../lib/sg-resource/decorators";
 import BasePage from "../BasePage";
 
-interface IHomePage {
+interface IIndexPage {
   /**
    * 获取页面展示所需的远程数据
    */
@@ -12,12 +12,10 @@ interface IHomePage {
 
 @Component({
   components: {},
-  name: "home",
+  name: "index",
 })
-export default class HomePage extends mixins(BasePage) implements IHomePage {
-
-  title: string = "Home";
-
+export default class IndexPage extends mixins(BasePage) implements IIndexPage {
+  title: string = "Index";
   fetchData() {
     //
   }
