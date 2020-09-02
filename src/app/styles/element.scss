@@ -92,9 +92,9 @@
 
 // 通用dialog
 .common-dialog {
-  margin-top: 15vh;
+  margin-top: 60px !important;
   width: 700px;
-  // min-height: 448px;
+  background: #fff;
   .item-lineHeight-16 {
     line-height: 16px;
   }
@@ -114,9 +114,11 @@
   }
   .el-dialog__body {
     padding: 24px 30px;
-    height: 464px;
+    // height: 464px;
     overflow: hidden;
     overflow-y: scroll;
+    min-height: 240px;
+    height: calc(100vh - 216px);
     .el-radio-group {
       width: 100%;
     }

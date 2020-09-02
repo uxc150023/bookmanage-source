@@ -63,6 +63,16 @@ const routes: RouteConfig[] = [
           requireAuth: true,
         },
       },
+      {
+        path: "/book_manage",
+        name: "bookManage",
+        component: PageFactory.bookManagePagePreloading,
+      },
+      {
+        path: "/add_book",
+        name: "addBook",
+        component: PageFactory.addBookPagePreloading,
+      },
     ],
   },
 

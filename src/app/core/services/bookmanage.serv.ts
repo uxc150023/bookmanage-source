@@ -6,9 +6,11 @@ export interface IBookmanageService {
   // login(userName: string, password: string): Promise<any>;
   getBookAll(pagination: PaginationInfo): Promise<any>;
   getBookInfo(id: string): Promise<any>;
+  getCategories(id: string): Promise<any>;
   bookUpdata(params: any): Promise<any>;
   bookAdd(params: any): Promise<any>;
   bookDelete(id: string): Promise<any>;
+  searchResult(keywords: string): Promise<any>;
   bookLogin(any: { username: string; password: string }): Promise<any>;
 }
 
@@ -31,6 +33,12 @@ export class BookmanageService extends BaseService
   }
   public getBookInfo(id: string): Promise<any> {
     return this.proxyHttp.get("getBookInfo", {}, [id]);
+  }
+  public getCategories(id: string): Promise<any> {
+    return this.proxyHttp.get("getCategories", {}, [id]);
+  }
+  public searchResult(keywords: string): Promise<any> {
+    return this.proxyHttp.get("searchResult", { keywords }, []);
   }
   public bookUpdata(params: any): Promise<any> {
     return this.proxyHttp.put("bookUpdata", params);

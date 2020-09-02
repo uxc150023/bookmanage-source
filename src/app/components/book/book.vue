@@ -1,7 +1,20 @@
 <template>
   <div class="comp-module">
     <el-row style="min-height: calc(100vh - 134px)">
-      <!--<search-bar></search-bar>-->
+      <div style="margin-bottom: 30px;text-align: center;">
+        <el-input
+          placeholder="通过书名或作者搜索..."
+          v-model="searchKey"
+          class="input-with-select"
+          style="width: 480px"
+          @keyup.enter.native="searchClick"
+        >
+          <el-button slot="append" icon="el-icon-search" @click="searchClick"
+            >搜索</el-button
+          >
+        </el-input>
+      </div>
+
       <el-tooltip
         effect="dark"
         placement="right"
@@ -18,13 +31,20 @@
         <p slot="content" style="width: 300px" class="abstract">
           {{ item.abs }}
         </p>
+
         <el-card
           style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px"
           class="book"
           bodyStyle="padding:10px"
-          shadow="hover"
         >
-          <div class="cover">
+          <div
+            class="cover"
+            shadow="hover"
+            @click="
+              isVisiable = true;
+              id = item.id;
+            "
+          >
             <img :src="item.cover" alt="封面" />
           </div>
           <div class="info">
@@ -49,6 +69,21 @@
         ></el-pagination>
       </div>
     </el-row>
+
+    <el-dialog
+      :title="addBook"
+      custom-class="common-dialog form-big"
+      :close-on-click-modal="false"
+      :visible.sync="isVisiable"
+      @open="open"
+      @close="close"
+    >
+      <edit-form ref="editForm" :id="id"></edit-form>
+      <div class="text-right" slot="footer">
+        <el-button @click="isVisiable = false">取消</el-button>
+        <el-button type="primary" @click="save">确定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script lang="ts" src="./book.ts"></script>

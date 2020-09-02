@@ -48,6 +48,7 @@ export default class LoginPage extends mixins(ComBaseComp)
           password: this.form.password,
           username: this.form.userName,
         });
+        this.$router.push({ name: "AppIndex" });
         // this.$store.commit(SET_ACCOUNT_INFO, data);
         // this.$router.replace("/");
       }

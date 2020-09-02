@@ -23,7 +23,6 @@ export default class NavMenuComp extends Vue {
 
   @Watch("$route.path")
   routrChange(valueNew: string, valueOld: string) {
-    console.log("====", valueNew);
     const m = valueNew.match(/^\/\w+/);
     if (m != null) {
       this.activeMenu = this.$route.meta.slideName || valueNew;
