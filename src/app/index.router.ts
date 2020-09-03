@@ -56,7 +56,7 @@ const routes: RouteConfig[] = [
         },
       },
       {
-        path: "/library",
+        path: "/library/:cid",
         name: "AppLibrary",
         component: PageFactory.libraryPagePreloading,
         meta: {

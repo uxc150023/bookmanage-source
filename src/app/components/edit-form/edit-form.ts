@@ -1,3 +1,4 @@
+import { ElForm } from "element-ui/types/form";
 import {
   Component,
   Emit,
@@ -9,6 +10,7 @@ import {
   Watch,
 } from "vue-property-decorator";
 import { AutowiredService } from "../../../lib/sg-resource/decorators";
+import { BookInfo } from "../../core/domain/BookInfo";
 import { BookmanageService } from "../../core/services/bookmanage.serv";
 
 @Component({
@@ -17,42 +19,30 @@ import { BookmanageService } from "../../core/services/bookmanage.serv";
 export default class EditFormComp extends Vue {
   @AutowiredService
   bookmanageService: BookmanageService;
-
-  form: any = {
-    id: "",
-    title: "",
-    author: "",
-    date: "",
-    press: "",
-    cover: "",
-    abs: "",
-    category: {
-      id: "",
-      name: "",
-    },
+  bookInfo: BookInfo = new BookInfo();
+  rules: any = {
+    author: [{ message: "请填写作者名", required: true, trigger: "blur" }],
+    cover: [{ message: "请填写封面地址", required: true, trigger: "blur" }],
+    date: [{ message: "请填写出版日", required: true, trigger: "blur" }],
+    title: [{ message: "请填写书名", required: true, trigger: "blur" }],
   };
-
-  @Prop({ default: "" })
-  id: string;
-
-  // 获取book详情
-  async getBookInfo() {
-    try {
-      const res = await this.bookmanageService.getCategories(this.id);
-      this.form = res[0];
-    } catch (error) {
-      //
-    }
-  }
-
   // 编辑
   async save() {
     try {
-      await this.bookmanageService.bookUpdata(this.form);
-      this.$message.success("修改成功");
+      await this.bookmanageService.bookUpdata(this.bookInfo);
+      this.$message.success("操作成功");
+      this.$emit("getBookInfo", this.bookInfo.category.id);
+      this.$router.push({ params: { cid: this.bookInfo.category.id } });
     } catch (error) {
-      //
+      this.$message.error(error);
     }
+  }
+  clear() {
+    (this.$refs.bookInfo as ElForm).clearValidate();
+    this.bookInfo = new BookInfo();
+  }
+  initFormData(bookInfo: any) {
+    this.bookInfo = JSON.parse(JSON.stringify(bookInfo));
   }
   /* 生命钩子 START */
   mounted() {}

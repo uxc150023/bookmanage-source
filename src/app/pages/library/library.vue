@@ -3,10 +3,10 @@
     <el-container>
       <el-aside style="width: 200px;margin-top: 20px">
         <switch></switch>
-        <side-menu></side-menu>
+        <side-menu @indexSelect="indexSelect"></side-menu>
       </el-aside>
       <el-main>
-        <book class="books-area"></book>
+        <book class="books-area" ref="books"></book>
       </el-main>
     </el-container>
   </div>

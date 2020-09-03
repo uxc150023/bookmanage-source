@@ -17,7 +17,7 @@ export default class NavMenuComp extends Vue {
   navList: any[] = [
     { name: "/main", navItem: "首页" },
     { name: "/jotter", navItem: "笔记本" },
-    { name: "/library", navItem: "图书馆" },
+    { name: "/library/0", navItem: "图书馆" },
     { name: "/admin", navItem: "个人中心" },
   ];
 

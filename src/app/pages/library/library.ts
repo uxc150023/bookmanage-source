@@ -25,18 +25,16 @@ export default class LibraryPage extends mixins(BasePage)
 
   tableData: any[] = [];
   fetchData() {
-    // this.getBookAll();
+    this.indexSelect(this.$route.params.cid);
   }
-
-  // async getBookAll() {
-  //   try {
-  //     const res = await this.bookmanageService.getBookAll(this.paginationInfo);
-  //     this.tableData = res.content;
-  //     this.paginationInfo.totalSize = res.totalElements;
-  //   } catch (error) {
-  //     //
-  //   }
-  // }
+  // 分类action
+  async indexSelect(pid: string) {
+    try {
+      await (this.$refs.books as any).getBookInfo(pid);
+    } catch (error) {
+      //
+    }
+  }
   /* 生命钩子 START */
   mounted() {
     this.fetchData();

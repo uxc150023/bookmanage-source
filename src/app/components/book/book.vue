@@ -13,11 +13,19 @@
             >搜索</el-button
           >
         </el-input>
+
+        <el-button
+          type="primary"
+          icon="el-icon-plus"
+          class="fl"
+          @click="isVisiable = true"
+          >添加图书</el-button
+        >
       </div>
 
       <el-tooltip
         effect="dark"
-        placement="right"
+        placement="left"
         v-for="item in books"
         :key="item.id"
       >
@@ -37,14 +45,7 @@
           class="book"
           bodyStyle="padding:10px"
         >
-          <div
-            class="cover"
-            shadow="hover"
-            @click="
-              isVisiable = true;
-              id = item.id;
-            "
-          >
+          <div class="cover" shadow="hover" @click="showDialog(item)">
             <img :src="item.cover" alt="封面" />
           </div>
           <div class="info">
@@ -75,10 +76,9 @@
       custom-class="common-dialog form-big"
       :close-on-click-modal="false"
       :visible.sync="isVisiable"
-      @open="open"
       @close="close"
     >
-      <edit-form ref="editForm" :id="id"></edit-form>
+      <edit-form ref="editForm" @getBookInfo="getBookInfo"></edit-form>
       <div class="text-right" slot="footer">
         <el-button @click="isVisiable = false">取消</el-button>
         <el-button type="primary" @click="save">确定</el-button>

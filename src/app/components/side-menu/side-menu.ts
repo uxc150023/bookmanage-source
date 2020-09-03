@@ -13,26 +13,26 @@ import {
   components: {},
 })
 export default class SideMenuComp extends Vue {
-  nameC: string = "xxxxxx";
-  activeMenu: string = "/index1";
+  activeMenu: string = "0";
   isCollapse: boolean = false;
   menuList: any[] = [
-    { name: "全部", path: "/index1", icon: "el-icon-s-platform" },
-    { name: "文学", path: "/index2", icon: "el-icon-s-platform" },
-    { name: "流行", path: "/index3", icon: "el-icon-s-platform" },
-    // {
-    //   icon: "el-icon-s-platform",
-    //   path: "/index4",
-    //   name: "文化",
-    //   children: [
-    //     { name: "全部", path: "/index8", icon: "el-icon-s-platform" },
-    //     { name: "全部", path: "/index9", icon: "el-icon-s-platform" },
-    //   ],
-    // },
-    { name: "生活", path: "/index5", icon: "el-icon-s-platform" },
-    { name: "经管", path: "/index6", icon: "el-icon-s-platform" },
-    { name: "科技", path: "/index7", icon: "el-icon-s-platform" },
+    { name: "全部", path: "0", icon: "el-icon-s-platform" },
+    { name: "文学", path: "1", icon: "el-icon-s-platform" },
+    { name: "流行", path: "2", icon: "el-icon-s-platform" },
+    {
+      icon: "el-icon-s-platform",
+      path: "3",
+      name: "文化",
+    },
+    { name: "生活", path: "4", icon: "el-icon-s-platform" },
+    { name: "经管", path: "5", icon: "el-icon-s-platform" },
+    { name: "科技", path: "6", icon: "el-icon-s-platform" },
   ];
+
+  @Watch("$route.params.cid")
+  changeParams(value: string) {
+    this.activeMenu = this.$route.params.cid;
+  }
 
   /**
    * 有菜单权限
@@ -57,11 +57,12 @@ export default class SideMenuComp extends Vue {
     return false;
   }
 
-  handleSelectMItem() {
-    this.$emit("indexSelect");
+  handleSelectMItem(key: string, keyPath: string) {
+    this.$router.push({ params: { cid: key } });
+    this.$emit("indexSelect", key);
   }
   /* 生命钩子 START */
   mounted() {
-    //
+    this.activeMenu = this.$route.params.cid;
   }
 }

@@ -10,7 +10,7 @@
           :index="menu.path"
           v-if="!menu.children && hasMenuPermission(menu.path)"
         >
-          <i :class="menu.icon"></i>
+          <em :class="menu.icon"></em>
           {{ menu.name }}
         </el-menu-item>
 
@@ -19,7 +19,7 @@
           v-show="validateShowSubMenu(menu.children)"
         >
           <template slot="title">
-            <i :class="menu.icon"></i>
+            <em :class="menu.icon"></em>
             <span slot="title">{{ menu.name }}</span>
           </template>
           <el-menu-item
@@ -28,7 +28,7 @@
             v-for="(child, i) in menu.children"
             :key="i"
           >
-            <i :class="menu.icon"></i>
+            <em :class="menu.icon"></em>
             <span>{{ child.name }}</span>
           </el-menu-item>
         </el-submenu>
