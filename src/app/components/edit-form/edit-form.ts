@@ -37,6 +37,11 @@ export default class EditFormComp extends Vue {
       this.$message.error(error);
     }
   }
+
+  uploadImg() {
+    this.bookInfo.cover = (this.$refs.imgUpload as any).url;
+  }
+
   clear() {
     (this.$refs.bookInfo as ElForm).clearValidate();
     this.bookInfo = new BookInfo();

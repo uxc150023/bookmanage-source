@@ -31,7 +31,7 @@ export default class SideMenuComp extends Vue {
 
   @Watch("$route.params.cid")
   changeParams(value: string) {
-    this.activeMenu = this.$route.params.cid;
+    this.activeMenu = this.$route.params.cid + "";
   }
 
   /**

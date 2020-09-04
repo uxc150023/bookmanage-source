@@ -47,7 +47,7 @@ export class BookmanageService extends BaseService
     return this.proxyHttp.post("bookAdd", params);
   }
   public bookDelete(id: string): Promise<any> {
-    return this.proxyHttp.delete("bookDelete", [id]);
+    return this.proxyHttp.post("bookDelete", { id });
   }
   public bookLogin(params: any): Promise<any> {
     return this.proxyHttp.post("bookLogin", params);

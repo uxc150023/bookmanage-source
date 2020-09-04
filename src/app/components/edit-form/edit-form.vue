@@ -31,11 +31,29 @@
           <el-input v-model="bookInfo.press" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="封面" prop="cover">
-          <el-input
+          <!-- <el-input
             v-model="bookInfo.cover"
             autocomplete="off"
             placeholder="图片 URL"
-          ></el-input>
+          ></el-input> -->
+          <el-upload
+            class="img-upload"
+            ref="upload"
+            action="http://localhost:8443/api/covers"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :before-remove="beforeRemove"
+            :on-success="handleSuccess"
+            multiple
+            :limit="1"
+            :on-exceed="handleExceed"
+            :file-list="fileList"
+          >
+            <el-button size="small" type="primary">点击上传</el-button>
+            <div slot="tip" class="el-upload__tip">
+              只能上传jpg/png文件，且不超过500kb
+            </div>
+          </el-upload>
         </el-form-item>
         <el-form-item label="简介" prop="abs">
           <el-input

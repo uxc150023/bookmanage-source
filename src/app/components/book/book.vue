@@ -23,7 +23,28 @@
         >
       </div>
 
-      <el-tooltip
+      <el-card
+        style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px"
+        class="book"
+        bodyStyle="padding:10px"
+        v-for="item in books"
+        :key="item.id"
+      >
+        <div class="cover" shadow="hover" @click="showDialog(item)">
+          <img :src="item.cover" alt="封面" />
+        </div>
+        <div class="info">
+          <div class="title">
+            <a href="">{{ item.title }}</a>
+          </div>
+        </div>
+        <div class="author">
+          {{ item.author }}
+          <em class="el-icon-delete fr" @click="deleteBook(item.id)"></em>
+        </div>
+      </el-card>
+
+      <!-- <el-tooltip
         effect="dark"
         placement="left"
         v-for="item in books"
@@ -54,8 +75,10 @@
             </div>
           </div>
           <div class="author">{{ item.author }}</div>
+
+          <em class="el-icon-delete" @click="deleteBook(item.id)"></em>
         </el-card>
-      </el-tooltip>
+      </el-tooltip> -->
     </el-row>
     <el-row>
       <div class="ta-center">
@@ -114,7 +137,6 @@ $color: #333;
 
   .author {
     color: #333;
-    width: 102px;
     font-size: 13px;
     margin-bottom: 6px;
     text-align: left;

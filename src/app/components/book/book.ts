@@ -54,13 +54,36 @@ export default class BookComp extends mixins(ComBaseComp) {
   }
 
   // 分类获取booklist
-  async getBookInfo(pid: string) {
+  async getBookInfo(cid: string) {
     try {
-      const res = await this.bookmanageService.getCategories(pid);
+      const res = await this.bookmanageService.getCategories(cid);
       this.books = res;
     } catch (error) {
       this.$message.error(error);
     }
+  }
+
+  async deleteBook(id: string) {
+    this.$confirm("此操作将永久删除该书籍, 是否继续?", "提示", {
+      cancelButtonText: "取消",
+      confirmButtonText: "确定",
+      type: "warning",
+    })
+      .then(async () => {
+        try {
+          await this.bookmanageService.bookDelete(id);
+          this.$message.success("删除成功");
+          this.getBookInfo(this.$route.params.cid);
+        } catch (error) {
+          this.messageError(error);
+        }
+      })
+      .catch(() => {
+        this.$message({
+          message: "已取消删除",
+          type: "info",
+        });
+      });
   }
 
   async save() {

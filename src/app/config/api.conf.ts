@@ -11,6 +11,7 @@ export const apiConfig: IApiConfig = {
     login: "apiHost:/pmUser/login",
     bookAdd: "apiHost:/book/add",
     bookLogin: "apiHost:/book/login",
+    bookDelete: "apiHost:/book/delete",
   },
   get: {
     // SGV-BUILD-API-GET # NOT DELETE
@@ -25,6 +26,6 @@ export const apiConfig: IApiConfig = {
   },
   delete: {
     // SGV-BUILD-API-DELETE # NOT DELETE
-    bookDelete: "apiHost:/book/delete",
+    // bookDelete: "apiHost:/book/delete",
   },
 };
